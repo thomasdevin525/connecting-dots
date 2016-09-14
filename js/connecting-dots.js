@@ -1,6 +1,7 @@
 var data = {
     canvas: null,
-    ctx: null
+    ctx: null,
+    dots: [{x: 100, y: 100}, {x: 200, y: 200}]
 };
 
 function prepCanvas () {
@@ -17,4 +18,17 @@ function prepCanvas () {
     data.ctx.scale(res, res);
 }
 
+function drawDots () {
+    var i = 0;
+    for (; i < data.dots.length; i++) {
+        var d = data.dots[i];
+        data.ctx.beginPath();
+        data.ctx.arc(d.x, d.y, 10, 0, 2*Math.PI);
+        data.ctx.fillStyle = '#777';
+        data.ctx.fill();
+        data.ctx.closePath();
+    }
+}
+
 prepCanvas();
+drawDots();
